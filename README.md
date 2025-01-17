@@ -3,7 +3,7 @@
 This project is a frontend application built with React.js to display various information related to Pokémon. It allows users to view data about Pokémon, their attributes, and stats.
 
 ## Hosted on the website :
-  link: https://thirisha12.github.io/Pokemo/
+  link: https://Thirisha12.github.io/Pokemo
 
 ## Tech Stack
 
