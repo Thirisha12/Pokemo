@@ -79,7 +79,6 @@ const PokemonPage = ({ pokemon, similarPokemons, onPokemonClick, onHomeClick }) 
           <div className='img-div'>
             <img className="clicked-pokemon-img" src={pokemon.image} alt={pokemon.name} />
             <h2>#{pokemon.id}&nbsp;&nbsp;{pokemon.name}</h2>
-
           </div>
           <div className='pok2'>
             <div className='pok1'>
@@ -153,6 +152,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -169,7 +169,7 @@ function App() {
             const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
             
             // Ensure fallback image in case the image URL is missing
-            const imageUrl = images?.front_default || details.sprites.front_default || 'default_image_url.png'; // Replace 'default_image_url.png' with a valid fallback image
+            const imageUrl = images?.front_default || details.sprites.front_default || 'default_image_url.png'; 
     
             return {
               id: details.id,
@@ -193,10 +193,10 @@ function App() {
       }
       setPokemonList(allPokemons);
       setFilteredList(allPokemons);
+      setLoading(false); // Set loading to false after data is fetched
     };    
     fetchPokemonData();
   }, []);
-
 
   const onPokemonClick = (pokemon) => {
     const lastImage = pokemon.images ? pokemon.images.front_default : pokemon.image;
@@ -266,7 +266,12 @@ function App() {
 
   return (
     <div className="app">
-      {currentPage === 'home' ? (
+      {loading ?(
+        <div className="loading-container show">
+          <div className="loading-spinner"></div>
+          <div className="loading-text">Loading Pokémon...</div>
+        </div>
+      ) : currentPage === 'home' ? (
         <HomePage
           pokemonList={filteredList}
           onPokemonClick={onPokemonClick}
@@ -288,5 +293,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
