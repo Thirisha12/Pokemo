@@ -10,7 +10,6 @@ This project is a frontend application built with React.js to display various in
 - **Frontend**:
   - **React.js**: JavaScript library for building user interfaces.
   - **Axios**: For making HTTP requests to fetch Pokémon data.
-  - **Chart.js**: For data visualization (if applicable to your project).
   - **gh-pages**: For deploying the app to GitHub Pages.
 
 - **Development Tools**:
